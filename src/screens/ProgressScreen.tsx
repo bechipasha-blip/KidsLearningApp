@@ -9,7 +9,7 @@ import { theme } from '../theme';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Quiz'>;
 
-export default function QuizScreen({ navigation, route }: Props) {
+export default function ProgressScreen({ navigation, route }: Props) {
   const lesson = getLessonById(route.params.lessonId);
   const { completeLesson } = useStore();
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -22,12 +22,12 @@ export default function QuizScreen({ navigation, route }: Props) {
   if (!lesson || !currentQuestion) {
     return (
       <SafeAreaView style={styles.container}>
-        <Text style={styles.title}>Quiz not found.</Text>
+        <Text style={styles.errorText}>Quiz not found.</Text>
       </SafeAreaView>
     );
   }
 
-  const handleAnswer = async (index: number) => {
+  const handleAnswer = (index: number) => {
     if (selectedIndex !== null) {
       return;
     }
@@ -64,7 +64,7 @@ export default function QuizScreen({ navigation, route }: Props) {
           <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
             <Text style={styles.backText}>←</Text>
           </TouchableOpacity>
-          <Text style={styles.headerTitle}>{lesson.title}</Text>
+          <Text style={styles.headerTitle} numberOfLines={1}>{lesson.title}</Text>
         </View>
 
         <ScrollView contentContainerStyle={styles.scrollContent}>
@@ -91,7 +91,7 @@ export default function QuizScreen({ navigation, route }: Props) {
 
           {showAnswer && (
             <View style={styles.explanationBox}>
-              <Text style={styles.explanationTitle}>{answeredCorrectly ? 'Great job!' : 'Nice try!'}</Text>
+              <Text style={styles.explanationTitle}>{answeredCorrectly ? 'Great job! 🎉' : 'Nice try!'}</Text>
               <Text style={styles.explanationText}>{currentQuestion.explanation}</Text>
             </View>
           )}
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
   header: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: 18, paddingTop: 18, paddingBottom: 8 },
   backButton: { width: 42, height: 42, borderRadius: 14, backgroundColor: theme.colors.primarySoft, justifyContent: 'center', alignItems: 'center' },
   backText: { fontSize: 22, color: theme.colors.primary, fontWeight: '700' },
-  headerTitle: { marginLeft: 12, fontSize: 22, fontWeight: '800', color: theme.colors.dark, flexShrink: 1 },
+  headerTitle: { marginLeft: 12, fontSize: 22, fontWeight: '800', color: theme.colors.dark, flex: 1 },
   scrollContent: { padding: 20, paddingTop: 10 },
   progressText: { fontSize: 16, fontWeight: '700', color: theme.colors.primary, marginBottom: 12 },
   question: { fontSize: 28, fontWeight: '800', color: theme.colors.dark, marginBottom: 18 },
@@ -125,5 +125,5 @@ const styles = StyleSheet.create({
   explanationText: { fontSize: 15, lineHeight: 20, color: theme.colors.darkSoft },
   primaryButton: { backgroundColor: theme.colors.primary, paddingVertical: 16, borderRadius: 18, alignItems: 'center', marginTop: 8 },
   primaryText: { color: '#fff', fontSize: 18, fontWeight: '800' },
-  title: { fontSize: 24, fontWeight: '800', color: theme.colors.dark }
+  errorText: { fontSize: 18, color: theme.colors.dark, textAlign: 'center' }
 });

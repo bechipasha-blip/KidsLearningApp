@@ -2,7 +2,7 @@
   "expo": {
     "name": "RuAli",
     "slug": "ruali-kids-learning",
-    "version": "1.2.0",
+    "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -16,20 +16,42 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.ruali.kids",
-      "buildNumber": "1"
+      "bundleIdentifier": "com.ruali.learning",
+      "buildNumber": "1",
+      "infoPlist": {
+        "NSCameraUsageDescription": "We don't use your camera",
+        "NSPhotoLibraryUsageDescription": "We don't access your photos",
+        "NSMicrophoneUsageDescription": "We don't use your microphone"
+      },
+      "scheme": "rualiapp"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#7C3AED"
       },
-      "package": "com.ruali.kids",
-      "versionCode": 1
+      "package": "com.ruali.learning",
+      "versionCode": 1,
+      "permissions": []
     },
     "web": {
       "bundler": "metro",
       "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "useFrameworks": "static"
+          }
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "ruali-learning"
+      }
     }
   }
 }

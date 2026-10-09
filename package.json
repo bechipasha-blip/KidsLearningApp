@@ -1,7 +1,7 @@
 {
   "name": "ruali",
-  "version": "1.2.0",
-  "description": "RuAli - A mobile learning app for kids from preschool to grade 7",
+  "version": "1.0.0",
+  "description": "RuAli Premium - Interactive learning app for kids ages 3-12. Math, Reading, Science, Logic, and Creative lessons.",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
@@ -10,7 +10,11 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "build:ios": "eas build --platform ios",
+    "build:android": "eas build --platform android",
+    "submit:ios": "eas submit --platform ios",
+    "submit:android": "eas submit --platform android"
   },
   "dependencies": {
     "expo": "^50.0.0",

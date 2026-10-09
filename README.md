@@ -1,154 +1,160 @@
-import React, { useMemo } from 'react';
-import { LinearGradient } from 'expo-linear-gradient';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { FlatList, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { useStore } from '../store/useStore';
-import { getLessonsByGrade, gradeLabels } from '../data/lessons';
-import { RootStackParamList } from '../types';
-import { theme } from '../theme';
+# RuAli Premium - App Store Release
 
-type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
+## Overview
+RuAli Premium is an interactive learning app designed for children ages 3-12. It features engaging lessons across Math, Reading, Science, Logic, and Creative categories, personalized learning paths, and premium features including ad-free experience, offline access, and progress insights.
 
-export default function HomeScreen({ navigation, route }: Props) {
-  const grade = route.params?.grade ?? 'preschool';
-  const lessons = useMemo(() => getLessonsByGrade(grade), [grade]);
-  const { progress, profile } = useStore();
+## Features
+- **Personalized Learning Profiles**: Create custom child profiles with avatars and names
+- **Adaptive Learning Path**: Smart lesson recommendations based on grade level
+- **Multiple Grade Levels**: Preschool through Grade 7 content
+- **5 Learning Categories**: Math, Reading, Science, Logic, and Creative
+- **Interactive Quizzes**: Instant feedback and explanations for every question
+- **Progress Tracking**: Stars, streaks, badges, and achievement celebration
+- **Parent Dashboard**: View child progress and learning insights
+- **Premium Subscription**: Unlimited lessons, ad-free experience, offline access
+- **Beautiful UI**: Kid-friendly design with smooth animations and playful colors
 
-  return (
-    <LinearGradient colors={['#F5F3FF', '#EEF2FF', '#F8FAFC']} style={styles.container}>
-      <SafeAreaView style={styles.safeArea}>
-        <ScrollView contentContainerStyle={styles.content}>
-          <View style={styles.headerRow}>
-            <TouchableOpacity onPress={() => navigation.navigate('GradeSelect')} style={styles.navButton}>
-              <Text style={styles.navText}>←</Text>
-            </TouchableOpacity>
+## Technical Stack
+- **Framework**: React Native with Expo
+- **State Management**: Zustand
+- **Navigation**: React Navigation (Stack, Tab)
+- **Storage**: AsyncStorage
+- **UI**: Native components with Expo Linear Gradient
+- **Language**: TypeScript
 
-            <View style={styles.titleWrap}>
-              <Text style={styles.appName}>{profile.avatar} RuAli</Text>
-              <Text style={styles.gradeText}>{gradeLabels[grade]}</Text>
-            </View>
+## Getting Started
 
-            <TouchableOpacity onPress={() => navigation.navigate('Progress')} style={styles.progressButton}>
-              <Text style={styles.progressText}>⭐ {progress.starCount}</Text>
-            </TouchableOpacity>
-          </View>
+### Prerequisites
+- Node.js 16+
+- npm or yarn
+- Expo CLI: `npm install -g expo-cli`
 
-          <View style={styles.heroCard}>
-            <Text style={styles.heroEmoji}>🚀</Text>
-            <Text style={styles.heroTitle}>Hi, {profile.name}! Ready for today’s challenge?</Text>
-            <Text style={styles.heroSubtitle}>
-              {profile.isPremium ? 'Premium path unlocked: personalized lessons and deeper discoveries.' : 'Upgrade to Premium for smart recommendations and unlimited packs.'}
-            </Text>
-          </View>
+### Installation
+```bash
+cd KidsLearningApp
+npm install
+npx expo start
+```
 
-          <View style={styles.quickActions}>
-            <TouchableOpacity style={styles.actionCard} onPress={() => navigation.navigate('Rewards')}>
-              <Text style={styles.actionIcon}>🏆</Text>
-              <Text style={styles.actionLabel}>Rewards</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.actionCard} onPress={() => navigation.navigate('ParentDashboard')}>
-              <Text style={styles.actionIcon}>👨‍👩‍👧‍👦</Text>
-              <Text style={styles.actionLabel}>Parent</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.actionCard} onPress={() => navigation.navigate('Premium')}>
-              <Text style={styles.actionIcon}>✨</Text>
-              <Text style={styles.actionLabel}>Premium</Text>
-            </TouchableOpacity>
-          </View>
+### Running on Device
+- **iOS**: `npx expo start --ios`
+- **Android**: `npx expo start --android`
+- **Web**: `npx expo start --web`
 
-          <View style={styles.sectionHeader}>
-            <Text style={styles.sectionTitle}>Learning path</Text>
-            <Text style={styles.sectionMeta}>{lessons.length} activities</Text>
-          </View>
+## App Store Submission
 
-          <FlatList
-            data={lessons}
-            scrollEnabled={false}
-            keyExtractor={(item) => item.id}
-            renderItem={({ item }) => {
-              const completed = progress.completedLessons.includes(item.id);
+### iOS (Apple App Store)
+1. Create Apple Developer Account
+2. Generate certificates and provisioning profiles
+3. Run: `eas build --platform ios`
+4. Submit: `eas submit --platform ios`
+5. Review and release in App Store Connect
 
-              return (
-                <TouchableOpacity
-                  activeOpacity={0.9}
-                  onPress={() => navigation.navigate('Lesson', { lessonId: item.id })}
-                  style={[styles.lessonCard, completed && styles.completedCard]}
-                >
-                  <View style={styles.lessonTop}>
-                    <View style={styles.iconCircle}><Text style={styles.lessonIcon}>{item.icon}</Text></View>
-                    <View style={styles.lessonHeaderText}>
-                      <Text style={styles.lessonCategory}>{item.category}</Text>
-                      <Text style={styles.lessonTitle}>{item.title}</Text>
-                    </View>
-                    <Text style={styles.lessonPoints}>⭐ {item.points}</Text>
-                  </View>
+### Android (Google Play Store)
+1. Create Google Play Developer Account
+2. Generate signing key
+3. Run: `eas build --platform android`
+4. Submit: `eas submit --platform android`
+5. Review and release in Google Play Console
 
-                  <Text style={styles.lessonDescription}>{item.description}</Text>
+## Screens & Navigation
+- **Onboarding**: Child profile setup and grade selection
+- **Home**: Main learning dashboard with lesson cards
+- **Lesson**: Lesson description and learning objectives
+- **Quiz**: Interactive quiz with instant feedback
+- **Progress**: Stars, badges, and streak tracking
+- **Rewards**: Achievement gallery and milestones
+- **Parent Dashboard**: Progress insights and learning overview
+- **Premium**: Subscription benefits and activation
 
-                  <View style={styles.lessonFooter}>
-                    <Text style={styles.lessonMeta}>{item.difficulty}</Text>
-                    <Text style={styles.lessonMeta}>{item.duration} min</Text>
-                  </View>
+## Key Data
+- **Total Lessons**: 15+ curated lessons
+- **Questions per Lesson**: 3 questions with explanations
+- **Grades**: Preschool, Kindergarten, Grades 1-2, 3-5, 6-7
+- **Categories**: Math, Reading, Science, Logic, Creative, Games
 
-                  <Text style={styles.lessonCta}>{completed ? 'Completed ✓' : 'Play now'}</Text>
-                </TouchableOpacity>
-              );
-            }}
-          />
-        </ScrollView>
-      </SafeAreaView>
-    </LinearGradient>
-  );
-}
+## App Store Screenshots & Description
 
-const styles = StyleSheet.create({
-  container: { flex: 1 },
-  safeArea: { flex: 1 },
-  content: { paddingHorizontal: 18, paddingTop: 12, paddingBottom: 28 },
-  headerRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20 },
-  navButton: { width: 42, height: 42, borderRadius: 14, backgroundColor: '#fff', justifyContent: 'center', alignItems: 'center', ...theme.shadow },
-  navText: { color: theme.colors.primary, fontSize: 24, fontWeight: '800' },
-  titleWrap: { alignItems: 'center', flex: 1 },
-  appName: { fontSize: 22, fontWeight: '900', color: theme.colors.dark },
-  gradeText: { fontSize: 14, color: theme.colors.primary, fontWeight: '700' },
-  progressButton: { backgroundColor: '#FDE68A', paddingHorizontal: 12, paddingVertical: 8, borderRadius: 12 },
-  progressText: { color: theme.colors.dark, fontWeight: '800' },
-  heroCard: {
-    backgroundColor: '#FFFFFF',
-    borderRadius: 28,
-    padding: 20,
-    marginBottom: 18,
-    ...theme.shadow
-  },
-  heroEmoji: { fontSize: 36, marginBottom: 8 },
-  heroTitle: { fontSize: 24, fontWeight: '800', color: theme.colors.dark, marginBottom: 6 },
-  heroSubtitle: { fontSize: 15, color: theme.colors.darkSoft, lineHeight: 22 },
-  quickActions: { flexDirection: 'row', marginBottom: 22 },
-  actionCard: { flex: 1, backgroundColor: '#fff', borderRadius: 18, padding: 16, alignItems: 'center', marginRight: 10, ...theme.shadow },
-  actionIcon: { fontSize: 28, marginBottom: 8 },
-  actionLabel: { fontSize: 16, fontWeight: '700', color: theme.colors.dark },
-  sectionHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 },
-  sectionTitle: { fontSize: 22, fontWeight: '800', color: theme.colors.dark },
-  sectionMeta: { color: theme.colors.darkSoft, fontWeight: '700' },
-  lessonCard: {
-    backgroundColor: '#FFFFFF',
-    borderRadius: 22,
-    padding: 16,
-    marginBottom: 14,
-    borderWidth: 2,
-    borderColor: theme.colors.border,
-    ...theme.shadow
-  },
-  completedCard: { borderColor: '#22C55E', backgroundColor: '#ECFDF5' },
-  lessonTop: { flexDirection: 'row', alignItems: 'center' },
-  iconCircle: { width: 52, height: 52, borderRadius: 16, backgroundColor: theme.colors.primarySoft, justifyContent: 'center', alignItems: 'center' },
-  lessonIcon: { fontSize: 26 },
-  lessonHeaderText: { flex: 1, marginLeft: 12 },
-  lessonCategory: { color: theme.colors.primary, fontWeight: '800', fontSize: 12 },
-  lessonTitle: { fontSize: 20, fontWeight: '800', color: theme.colors.dark },
-  lessonPoints: { color: theme.colors.secondary, fontWeight: '800' },
-  lessonDescription: { marginTop: 12, color: theme.colors.darkSoft, lineHeight: 21 },
-  lessonFooter: { flexDirection: 'row', justifyContent: 'space-between', marginTop: 14 },
-  lessonMeta: { fontSize: 13, fontWeight: '700', color: theme.colors.darkSoft },
-  lessonCta: { marginTop: 14, fontWeight: '800', color: theme.colors.primary, fontSize: 16 }
-});
+### App Store Title
+**RuAli Premium - Kids Learning**
+
+### Subtitle
+Interactive lessons for ages 3-12
+
+### Description
+RuAli Premium is a fun and engaging learning app designed to make education joyful for children ages 3-12. With personalized learning paths, interactive quizzes, and reward systems, children learn at their own pace across Math, Reading, Science, Logic, and Creative subjects.
+
+**Features:**
+- 15+ curated lessons across 5 learning categories
+- Personalized profiles with cute avatars
+- Interactive quizzes with instant feedback
+- Progress tracking with stars and badges
+- Parent dashboard for learning insights
+- Ad-free premium experience
+- Offline lesson access
+
+**Learning Categories:**
+- Math: Addition, Fractions, Measurement, Patterns
+- Reading: Phonics, Story comprehension, Word building
+- Science: Planets, Weather, STEM challenges
+- Logic: Puzzles, Pattern recognition, Problem solving
+- Creative: Art, Colors, Imagination
+
+**How It Works:**
+1. Create a personalized profile for your child
+2. Select a grade level
+3. Choose from engaging lessons
+4. Answer quiz questions and earn stars
+5. Unlock badges and track progress
+
+Trusted by parents and educators. No ads. No invasive tracking. Pure learning joy.
+
+### Keywords
+kids learning, educational games, preschool, kindergarten, elementary school, math games, reading, science, logic puzzles, interactive lessons, child development
+
+### Age Rating
+- **iOS**: 4+
+- **Android**: 3+
+
+### Content Rating
+No objectionable content. Suitable for all ages.
+
+## Monetization Model
+- **Free with Premium Option**: Basic lessons free, premium subscription for unlimited access
+- **Subscription Price**: $9.99/month or $69.99/year (adjustable by region)
+- **No In-App Purchases**: Clean, child-safe monetization
+
+## Privacy & Compliance
+- **COPPA Compliant**: Designed for children under 13
+- **GDPR Compliant**: Privacy-first approach
+- **No Data Collection**: Minimal tracking, local storage only
+- **No Third-Party Ads**: Ad-free experience
+- **Parental Controls**: Parent dashboard view only
+
+## Support & Contact
+- **Email**: support@ruali.com
+- **Website**: www.ruali.com
+- **Privacy Policy**: See in-app
+- **Terms of Service**: See in-app
+
+## Version History
+- **v1.0.0**: Initial release
+  - 15 curated lessons
+  - Onboarding and profile setup
+  - Premium subscription
+  - Parent dashboard
+  - Progress tracking
+
+## Future Roadmap
+- Multiplayer learning challenges
+- Adaptive AI-based recommendations
+- Additional lesson packs
+- Achievements and milestones
+- Parent-teacher portal
+- Live tutoring integration
+
+## License
+MIT
+
+## Credits
+Designed with ❤️ for joyful learning.

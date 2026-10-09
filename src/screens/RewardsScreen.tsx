@@ -8,7 +8,7 @@ import { theme } from '../theme';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Progress'>;
 
-export default function ProgressScreen({ navigation }: Props) {
+export default function RewardsScreen({ navigation }: Props) {
   const { progress } = useStore();
 
   return (
@@ -30,7 +30,7 @@ export default function ProgressScreen({ navigation }: Props) {
 
           <View style={styles.statsRow}>
             <View style={styles.miniCard}>
-              <Text style={styles.miniEmoji}>📘</Text>
+              <Text style={styles.miniEmoji}>📖</Text>
               <Text style={styles.miniValue}>{progress.completedLessons.length}</Text>
               <Text style={styles.miniLabel}>Lessons</Text>
             </View>
