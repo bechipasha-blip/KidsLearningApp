@@ -5,6 +5,8 @@ export type GradeLevel =
   | 'grades3-5'
   | 'grades6-7';
 
+export type Avatar = '🐼' | '🦊' | '🐻' | '🐰' | '🐨' | '🦄';
+
 export type LessonCategory = 'Math' | 'Reading' | 'Science' | 'Logic' | 'Creative' | 'Games';
 
 export type Question = {
@@ -37,7 +39,14 @@ export type ProgressRecord = {
   badges: string[];
 };
 
+export type UserProfile = {
+  name: string;
+  avatar: Avatar;
+  isPremium: boolean;
+};
+
 export type RootStackParamList = {
+  Onboarding: undefined;
   GradeSelect: undefined;
   Home: { grade?: GradeLevel };
   Lesson: { lessonId: string };
@@ -45,4 +54,5 @@ export type RootStackParamList = {
   Progress: undefined;
   Rewards: undefined;
   ParentDashboard: undefined;
+  Premium: undefined;
 };

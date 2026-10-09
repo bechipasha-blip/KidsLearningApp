@@ -1,64 +1,56 @@
 import React from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useStore } from '../store/useStore';
-import { gradeLabels } from '../data/lessons';
-import { RootStackParamList, GradeLevel } from '../types';
+import { RootStackParamList } from '../types';
 import { theme } from '../theme';
 
-const gradeOrder: GradeLevel[] = ['preschool', 'kindergarten', 'grades1-2', 'grades3-5', 'grades6-7'];
+type Props = NativeStackScreenProps<RootStackParamList, 'Premium'>;
 
-export default function GradeSelectScreen() {
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
-  const { hydrate, setSelectedGrade, selectedGrade } = useStore();
+const features = [
+  'Unlimited lesson packs',
+  'Personalized smart path',
+  'Ad-free learning experience',
+  'Premium progress insights',
+  'Offline access for trips and travel'
+];
 
-  React.useEffect(() => {
-    hydrate();
-  }, [hydrate]);
+export default function PremiumScreen({ navigation }: Props) {
+  const { togglePremium, profile } = useStore();
 
-  const handlePress = async (grade: GradeLevel) => {
-    await setSelectedGrade(grade);
-    navigation.navigate('Home', { grade });
+  const handleActivate = async () => {
+    await togglePremium(true);
+    navigation.navigate('Home', { grade: 'preschool' });
   };
 
   return (
-    <LinearGradient colors={['#F5F3FF', '#EDE9FE', '#F8FAFC']} style={styles.container}>
+    <LinearGradient colors={['#F5F3FF', '#FDF2F8', '#EFF6FF']} style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
-        <ScrollView contentContainerStyle={styles.scrollContent}>
-          <View style={styles.headerBadge}>
-            <Text style={styles.badgeText}>RuAli</Text>
+        <View style={styles.header}>
+          <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+            <Text style={styles.backText}>←</Text>
+          </TouchableOpacity>
+          <Text style={styles.headerTitle}>RuAli Premium</Text>
+        </View>
+
+        <ScrollView contentContainerStyle={styles.content}>
+          <View style={styles.heroCard}>
+            <Text style={styles.heroBadge}>Best value</Text>
+            <Text style={styles.title}>Unlock your child’s full learning journey</Text>
+            <Text style={styles.price}>$9.99/mo</Text>
           </View>
 
-          <Text style={styles.emoji}>🌟</Text>
-          <Text style={styles.title}>Choose a learning level</Text>
-          <Text style={styles.subtitle}>Learn, play, and grow from preschool to grade 7.</Text>
+          {features.map((feature) => (
+            <View key={feature} style={styles.featureRow}>
+              <Text style={styles.check}>✓</Text>
+              <Text style={styles.featureText}>{feature}</Text>
+            </View>
+          ))}
 
-          {gradeOrder.map((grade) => {
-            const isSelected = selectedGrade === grade;
-            return (
-              <TouchableOpacity
-                key={grade}
-                activeOpacity={0.9}
-                onPress={() => handlePress(grade)}
-                style={[styles.gradeCard, isSelected && styles.selectedCard]}
-              >
-                <View style={styles.cardRow}>
-                  <View style={styles.iconWrap}>
-                    <Text style={styles.iconText}>{grade === 'preschool' ? '🎨' : grade === 'kindergarten' ? '📚' : grade === 'grades1-2' ? '🧠' : grade === 'grades3-5' ? '🚀' : '🏆'}</Text>
-                  </View>
-
-                  <View style={styles.textWrap}>
-                    <Text style={styles.gradeName}>{gradeLabels[grade]}</Text>
-                    <Text style={styles.gradeMeta}>Playful lessons and quizzes</Text>
-                  </View>
-
-                  <Text style={styles.arrow}>›</Text>
-                </View>
-              </TouchableOpacity>
-            );
-          })}
+          <TouchableOpacity style={styles.primaryButton} onPress={handleActivate}>
+            <Text style={styles.primaryText}>{profile.isPremium ? 'Premium active' : 'Activate Premium'}</Text>
+          </TouchableOpacity>
         </ScrollView>
       </SafeAreaView>
     </LinearGradient>
@@ -68,43 +60,18 @@ export default function GradeSelectScreen() {
 const styles = StyleSheet.create({
   container: { flex: 1 },
   safeArea: { flex: 1 },
-  scrollContent: { padding: 24, paddingTop: 32 },
-  headerBadge: {
-    alignSelf: 'center',
-    backgroundColor: '#FFFFFF',
-    borderRadius: 24,
-    paddingHorizontal: 18,
-    paddingVertical: 8,
-    marginBottom: 16,
-    shadowColor: '#000',
-    shadowOpacity: 0.1,
-    shadowRadius: 8,
-    elevation: 3
-  },
-  badgeText: {
-    color: theme.colors.primary,
-    fontSize: 18,
-    fontWeight: '800'
-  },
-  emoji: { fontSize: 56, textAlign: 'center', marginBottom: 12 },
-  title: { fontSize: 30, fontWeight: '800', color: theme.colors.dark, textAlign: 'center', marginBottom: 8 },
-  subtitle: { fontSize: 16, color: theme.colors.darkSoft, textAlign: 'center', marginBottom: 28 },
-  gradeCard: {
-    backgroundColor: '#FFFFFF',
-    borderRadius: theme.radius.lg,
-    paddingVertical: 18,
-    paddingHorizontal: 16,
-    marginBottom: 14,
-    borderWidth: 2,
-    borderColor: theme.colors.border,
-    ...theme.shadow
-  },
-  selectedCard: { borderColor: theme.colors.primary, backgroundColor: theme.colors.primarySoft },
-  cardRow: { flexDirection: 'row', alignItems: 'center' },
-  iconWrap: { width: 56, height: 56, borderRadius: 18, backgroundColor: '#FDE68A', justifyContent: 'center', alignItems: 'center' },
-  iconText: { fontSize: 28 },
-  textWrap: { flex: 1, marginLeft: 14 },
-  gradeName: { fontSize: 22, fontWeight: '700', color: theme.colors.dark },
-  gradeMeta: { marginTop: 2, fontSize: 14, color: theme.colors.darkSoft },
-  arrow: { fontSize: 30, color: theme.colors.primary, fontWeight: '700' }
+  header: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: 18, paddingTop: 18, paddingBottom: 10 },
+  backButton: { width: 42, height: 42, borderRadius: 14, backgroundColor: '#fff', justifyContent: 'center', alignItems: 'center', ...theme.shadow },
+  backText: { fontSize: 22, color: theme.colors.primary, fontWeight: '700' },
+  headerTitle: { marginLeft: 12, fontSize: 24, fontWeight: '800', color: theme.colors.dark },
+  content: { padding: 20 },
+  heroCard: { backgroundColor: '#fff', borderRadius: 28, padding: 22, marginBottom: 16, ...theme.shadow },
+  heroBadge: { alignSelf: 'flex-start', backgroundColor: '#FDE68A', borderRadius: 12, paddingHorizontal: 10, paddingVertical: 6, fontWeight: '800', color: theme.colors.dark },
+  title: { fontSize: 28, fontWeight: '900', color: theme.colors.dark, marginTop: 14 },
+  price: { fontSize: 28, fontWeight: '900', color: theme.colors.primary, marginTop: 12 },
+  featureRow: { flexDirection: 'row', alignItems: 'center', backgroundColor: '#fff', borderRadius: 16, padding: 14, marginBottom: 10, ...theme.shadow },
+  check: { color: theme.colors.success, fontSize: 20, fontWeight: '900', marginRight: 12 },
+  featureText: { fontSize: 16, color: theme.colors.dark, fontWeight: '700' },
+  primaryButton: { marginTop: 18, backgroundColor: theme.colors.primary, borderRadius: 18, paddingVertical: 16, alignItems: 'center' },
+  primaryText: { color: '#fff', fontSize: 18, fontWeight: '800' }
 });
