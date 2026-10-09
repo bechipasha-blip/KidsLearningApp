@@ -1,40 +1,32 @@
-export const theme = {
-  colors: {
-    primary: '#7C3AED',
-    primarySoft: '#E9D5FF',
-    secondary: '#F59E0B',
-    success: '#10B981',
-    warning: '#FBBF24',
-    red: '#EF4444',
-    dark: '#1F2937',
-    darkSoft: '#374151',
-    light: '#F8FAFC',
-    card: '#FFFFFF',
-    border: '#E5E7EB',
-    softBlue: '#DBEAFE',
-    softPink: '#FCE7F3',
-    softGreen: '#DCFCE7',
-    softYellow: '#FEF3C7'
-  },
-  spacing: {
-    xs: 8,
-    sm: 12,
-    md: 16,
-    lg: 20,
-    xl: 24,
-    xxl: 32
-  },
-  radius: {
-    sm: 10,
-    md: 16,
-    lg: 22,
-    xl: 30
-  },
-  shadow: {
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.1,
-    shadowRadius: 8,
-    elevation: 4
-  }
-};
+import React from 'react';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../types';
+import GradeSelectScreen from '../screens/GradeSelectScreen';
+import HomeScreen from '../screens/HomeScreen';
+import LessonScreen from '../screens/LessonScreen';
+import QuizScreen from '../screens/QuizScreen';
+import ProgressScreen from '../screens/ProgressScreen';
+import RewardsScreen from '../screens/RewardsScreen';
+import ParentDashboardScreen from '../screens/ParentDashboardScreen';
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
+
+export default function AppNavigator() {
+  return (
+    <Stack.Navigator
+      initialRouteName="GradeSelect"
+      screenOptions={{
+        headerShown: false,
+        animation: 'slide_from_right'
+      }}
+    >
+      <Stack.Screen name="GradeSelect" component={GradeSelectScreen} />
+      <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="Lesson" component={LessonScreen} />
+      <Stack.Screen name="Quiz" component={QuizScreen} />
+      <Stack.Screen name="Progress" component={ProgressScreen} />
+      <Stack.Screen name="Rewards" component={RewardsScreen} />
+      <Stack.Screen name="ParentDashboard" component={ParentDashboardScreen} />
+    </Stack.Navigator>
+  );
+}

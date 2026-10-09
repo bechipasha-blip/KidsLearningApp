@@ -11,28 +11,11 @@ const lessonSet: Lesson[] = [
     description: 'Learn the sounds and letters from A to Z with fun recognition games.',
     points: 10,
     badge: 'Letter Explorer',
+    icon: '📚',
     questions: [
-      {
-        id: 'a1',
-        prompt: 'Which letter comes after A?',
-        options: ['B', 'C', 'D'],
-        answerIndex: 0,
-        explanation: 'A is followed by B in the alphabet.'
-      },
-      {
-        id: 'a2',
-        prompt: 'Which word starts with the letter M?',
-        options: ['Sun', 'Moon', 'Star'],
-        answerIndex: 1,
-        explanation: 'Moon begins with the letter M.'
-      },
-      {
-        id: 'a3',
-        prompt: 'Which letter makes the /s/ sound?',
-        options: ['S', 'O', 'K'],
-        answerIndex: 0,
-        explanation: 'S makes the /s/ sound.'
-      }
+      { id: 'a1', prompt: 'Which letter comes after A?', options: ['B', 'C', 'D'], answerIndex: 0, explanation: 'A is followed by B in the alphabet.' },
+      { id: 'a2', prompt: 'Which word starts with the letter M?', options: ['Sun', 'Moon', 'Star'], answerIndex: 1, explanation: 'Moon begins with the letter M.' },
+      { id: 'a3', prompt: 'Which letter makes the /s/ sound?', options: ['S', 'O', 'K'], answerIndex: 0, explanation: 'S makes the /s/ sound.' }
     ]
   },
   {
@@ -45,28 +28,11 @@ const lessonSet: Lesson[] = [
     description: 'Count objects, learn numbers, and practice simple ordering.',
     points: 12,
     badge: 'Number Star',
+    icon: '🔢',
     questions: [
-      {
-        id: 'c1',
-        prompt: 'How many apples are shown if you count 1, 2, 3?',
-        options: ['2', '3', '4'],
-        answerIndex: 1,
-        explanation: '1, 2, 3 means there are 3 apples.'
-      },
-      {
-        id: 'c2',
-        prompt: 'Which number comes before 5?',
-        options: ['4', '6', '7'],
-        answerIndex: 0,
-        explanation: '4 comes right before 5.'
-      },
-      {
-        id: 'c3',
-        prompt: 'What is 2 + 1?',
-        options: ['2', '3', '4'],
-        answerIndex: 1,
-        explanation: '2 + 1 = 3.'
-      }
+      { id: 'c1', prompt: 'How many apples are shown if you count 1, 2, 3?', options: ['2', '3', '4'], answerIndex: 1, explanation: '1, 2, 3 means there are 3 apples.' },
+      { id: 'c2', prompt: 'Which number comes before 5?', options: ['4', '6', '7'], answerIndex: 0, explanation: '4 comes right before 5.' },
+      { id: 'c3', prompt: 'What is 2 + 1?', options: ['2', '3', '4'], answerIndex: 1, explanation: '2 + 1 = 3.' }
     ]
   },
   {
@@ -79,28 +45,11 @@ const lessonSet: Lesson[] = [
     description: 'Identify and compare shapes like circles, squares, and triangles.',
     points: 12,
     badge: 'Shape Detective',
+    icon: '🔷',
     questions: [
-      {
-        id: 's1',
-        prompt: 'Which shape has 3 sides?',
-        options: ['Triangle', 'Circle', 'Square'],
-        answerIndex: 0,
-        explanation: 'A triangle has 3 sides.'
-      },
-      {
-        id: 's2',
-        prompt: 'Which shape is round?',
-        options: ['Rectangle', 'Circle', 'Hexagon'],
-        answerIndex: 1,
-        explanation: 'A circle is round.'
-      },
-      {
-        id: 's3',
-        prompt: 'How many sides does a square have?',
-        options: ['3', '4', '5'],
-        answerIndex: 1,
-        explanation: 'A square has 4 equal sides.'
-      }
+      { id: 's1', prompt: 'Which shape has 3 sides?', options: ['Triangle', 'Circle', 'Square'], answerIndex: 0, explanation: 'A triangle has 3 sides.' },
+      { id: 's2', prompt: 'Which shape is round?', options: ['Rectangle', 'Circle', 'Hexagon'], answerIndex: 1, explanation: 'A circle is round.' },
+      { id: 's3', prompt: 'How many sides does a square have?', options: ['3', '4', '5'], answerIndex: 1, explanation: 'A square has 4 equal sides.' }
     ]
   },
   {
@@ -113,28 +62,11 @@ const lessonSet: Lesson[] = [
     description: 'Match beginning sounds and build simple reading confidence.',
     points: 15,
     badge: 'Sound Builder',
+    icon: '🔤',
     questions: [
-      {
-        id: 'p1',
-        prompt: 'Which word starts with the /b/ sound?',
-        options: ['Dog', 'Ball', 'Sun'],
-        answerIndex: 1,
-        explanation: 'Ball starts with the /b/ sound.'
-      },
-      {
-        id: 'p2',
-        prompt: 'Which word ends with the /t/ sound?',
-        options: ['Cat', 'Tree', 'Moon'],
-        answerIndex: 0,
-        explanation: 'Cat ends with the /t/ sound.'
-      },
-      {
-        id: 'p3',
-        prompt: 'Which sound does the letter C make in “cat”?',
-        options: ['/k/', '/s/', '/m/'],
-        answerIndex: 0,
-        explanation: 'In “cat”, C makes the /k/ sound.'
-      }
+      { id: 'p1', prompt: 'Which word starts with the /b/ sound?', options: ['Dog', 'Ball', 'Sun'], answerIndex: 1, explanation: 'Ball starts with the /b/ sound.' },
+      { id: 'p2', prompt: 'Which word ends with the /t/ sound?', options: ['Cat', 'Tree', 'Moon'], answerIndex: 0, explanation: 'Cat ends with the /t/ sound.' },
+      { id: 'p3', prompt: 'Which sound does the letter C make in “cat”?', options: ['/k/', '/s/', '/m/'], answerIndex: 0, explanation: 'In “cat”, C makes the /k/ sound.' }
     ]
   },
   {
@@ -147,28 +79,11 @@ const lessonSet: Lesson[] = [
     description: 'Practice adding numbers up to 20 using colorful number stories.',
     points: 18,
     badge: 'Math Explorer',
+    icon: '➕',
     questions: [
-      {
-        id: 'ad1',
-        prompt: 'What is 6 + 3?',
-        options: ['8', '9', '10'],
-        answerIndex: 1,
-        explanation: '6 + 3 = 9.'
-      },
-      {
-        id: 'ad2',
-        prompt: 'What is 8 + 2?',
-        options: ['10', '11', '12'],
-        answerIndex: 0,
-        explanation: '8 + 2 = 10.'
-      },
-      {
-        id: 'ad3',
-        prompt: 'If you have 4 cookies and get 2 more, how many cookies?',
-        options: ['5', '6', '7'],
-        answerIndex: 1,
-        explanation: '4 + 2 = 6.'
-      }
+      { id: 'ad1', prompt: 'What is 6 + 3?', options: ['8', '9', '10'], answerIndex: 1, explanation: '6 + 3 = 9.' },
+      { id: 'ad2', prompt: 'What is 8 + 2?', options: ['10', '11', '12'], answerIndex: 0, explanation: '8 + 2 = 10.' },
+      { id: 'ad3', prompt: 'If you have 4 cookies and get 2 more, how many cookies?', options: ['5', '6', '7'], answerIndex: 1, explanation: '4 + 2 = 6.' }
     ]
   },
   {
@@ -181,28 +96,11 @@ const lessonSet: Lesson[] = [
     description: 'Read short passages and discover the main idea and details.',
     points: 20,
     badge: 'Reading Detective',
+    icon: '🧩',
     questions: [
-      {
-        id: 'sc1',
-        prompt: 'What is the main idea of a story?',
-        options: ['The topic or message', 'The punctuation', 'The chapter title'],
-        answerIndex: 0,
-        explanation: 'The main idea is the big message or topic of the story.'
-      },
-      {
-        id: 'sc2',
-        prompt: 'Which detail supports the main idea?',
-        options: ['A key fact from the story', 'A random question', 'A different book title'],
-        answerIndex: 0,
-        explanation: 'A supporting detail gives more information about the story idea.'
-      },
-      {
-        id: 'sc3',
-        prompt: 'Why do readers look for clues in a story?',
-        options: ['To understand the text better', 'To make it longer', 'To avoid reading'],
-        answerIndex: 0,
-        explanation: 'Clues help us understand what is happening in the story.'
-      }
+      { id: 'sc1', prompt: 'What is the main idea of a story?', options: ['The topic or message', 'The punctuation', 'The chapter title'], answerIndex: 0, explanation: 'The main idea is the big message or topic of the story.' },
+      { id: 'sc2', prompt: 'Which detail supports the main idea?', options: ['A key fact from the story', 'A random question', 'A different book title'], answerIndex: 0, explanation: 'A supporting detail gives more information about the story idea.' },
+      { id: 'sc3', prompt: 'Why do readers look for clues in a story?', options: ['To understand the text better', 'To make it longer', 'To avoid reading'], answerIndex: 0, explanation: 'Clues help us understand what is happening in the story.' }
     ]
   },
   {
@@ -215,28 +113,11 @@ const lessonSet: Lesson[] = [
     description: 'Explore the solar system and learn how planets are different.',
     points: 25,
     badge: 'Space Explorer',
+    icon: '🪐',
     questions: [
-      {
-        id: 'pp1',
-        prompt: 'Which planet is known as the Red Planet?',
-        options: ['Venus', 'Mars', 'Jupiter'],
-        answerIndex: 1,
-        explanation: 'Mars is called the Red Planet.'
-      },
-      {
-        id: 'pp2',
-        prompt: 'What do plants need to make food?',
-        options: ['Light, water, and air', 'Sand and rocks', 'Only shade'],
-        answerIndex: 0,
-        explanation: 'Plants need sunlight, water, and air to grow.'
-      },
-      {
-        id: 'pp3',
-        prompt: 'Which force pulls things toward Earth?',
-        options: ['Gravity', 'Sound', 'Magnetism'],
-        answerIndex: 0,
-        explanation: 'Gravity pulls objects toward Earth.'
-      }
+      { id: 'pp1', prompt: 'Which planet is known as the Red Planet?', options: ['Venus', 'Mars', 'Jupiter'], answerIndex: 1, explanation: 'Mars is called the Red Planet.' },
+      { id: 'pp2', prompt: 'What do plants need to make food?', options: ['Light, water, and air', 'Sand and rocks', 'Only shade'], answerIndex: 0, explanation: 'Plants need sunlight, water, and air to grow.' },
+      { id: 'pp3', prompt: 'Which force pulls things toward Earth?', options: ['Gravity', 'Sound', 'Magnetism'], answerIndex: 0, explanation: 'Gravity pulls objects toward Earth.' }
     ]
   },
   {
@@ -249,28 +130,11 @@ const lessonSet: Lesson[] = [
     description: 'Build intuition about halves, thirds, and quarters with visuals.',
     points: 24,
     badge: 'Fraction Builder',
+    icon: '🍰',
     questions: [
-      {
-        id: 'ff1',
-        prompt: 'What is 1/2 of 8?',
-        options: ['2', '4', '6'],
-        answerIndex: 1,
-        explanation: 'Half of 8 is 4.'
-      },
-      {
-        id: 'ff2',
-        prompt: 'Which fraction is larger: 1/2 or 1/4?',
-        options: ['1/2', '1/4', 'They are equal'],
-        answerIndex: 0,
-        explanation: 'One half is larger than one quarter.'
-      },
-      {
-        id: 'ff3',
-        prompt: 'How many quarters make a whole?',
-        options: ['2', '3', '4'],
-        answerIndex: 2,
-        explanation: 'Four quarters make one whole.'
-      }
+      { id: 'ff1', prompt: 'What is 1/2 of 8?', options: ['2', '4', '6'], answerIndex: 1, explanation: 'Half of 8 is 4.' },
+      { id: 'ff2', prompt: 'Which fraction is larger: 1/2 or 1/4?', options: ['1/2', '1/4', 'They are equal'], answerIndex: 0, explanation: 'One half is larger than one quarter.' },
+      { id: 'ff3', prompt: 'How many quarters make a whole?', options: ['2', '3', '4'], answerIndex: 2, explanation: 'Four quarters make one whole.' }
     ]
   },
   {
@@ -283,28 +147,11 @@ const lessonSet: Lesson[] = [
     description: 'Use reasoning and patterns to solve puzzles and challenges.',
     points: 30,
     badge: 'Puzzle Master',
+    icon: '🧠',
     questions: [
-      {
-        id: 'll1',
-        prompt: 'If all squares are shapes, and all shapes are objects, then all squares are:',
-        options: ['Objects', 'Circles', 'Numbers'],
-        answerIndex: 0,
-        explanation: 'Squares are shapes, and all shapes are objects.'
-      },
-      {
-        id: 'll2',
-        prompt: 'Find the pattern: 2, 4, 8, 16, ?',
-        options: ['18', '24', '32'],
-        answerIndex: 2,
-        explanation: 'Each number doubles: 2, 4, 8, 16, 32.'
-      },
-      {
-        id: 'll3',
-        prompt: 'If a triangle has 3 sides, how many sides does a hexagon have?',
-        options: ['5', '6', '7'],
-        answerIndex: 1,
-        explanation: 'A hexagon has 6 sides.'
-      }
+      { id: 'll1', prompt: 'If all squares are shapes, and all shapes are objects, then all squares are:', options: ['Objects', 'Circles', 'Numbers'], answerIndex: 0, explanation: 'Squares are shapes, and all shapes are objects.' },
+      { id: 'll2', prompt: 'Find the pattern: 2, 4, 8, 16, ?', options: ['18', '24', '32'], answerIndex: 2, explanation: 'Each number doubles: 2, 4, 8, 16, 32.' },
+      { id: 'll3', prompt: 'If a triangle has 3 sides, how many sides does a hexagon have?', options: ['5', '6', '7'], answerIndex: 1, explanation: 'A hexagon has 6 sides.' }
     ]
   },
   {
@@ -317,28 +164,96 @@ const lessonSet: Lesson[] = [
     description: 'Solve mini science challenges about energy, cells, and engineering.',
     points: 32,
     badge: 'Future Scientist',
+    icon: '🔬',
     questions: [
-      {
-        id: 'ss1',
-        prompt: 'Which type of energy is stored in food?',
-        options: ['Chemical energy', 'Sound energy', 'Light energy'],
-        answerIndex: 0,
-        explanation: 'Food contains chemical energy.'
-      },
-      {
-        id: 'ss2',
-        prompt: 'Which part of a plant makes food?',
-        options: ['Leaf', 'Root', 'Stem'],
-        answerIndex: 0,
-        explanation: 'Leaves use sunlight to make food for the plant.'
-      },
-      {
-        id: 'ss3',
-        prompt: 'What is an engineer most likely to do?',
-        options: ['Design a bridge', 'Paint a picture', 'Write a story'],
-        answerIndex: 0,
-        explanation: 'Engineers design and build structures and systems.'
-      }
+      { id: 'ss1', prompt: 'Which type of energy is stored in food?', options: ['Chemical energy', 'Sound energy', 'Light energy'], answerIndex: 0, explanation: 'Food contains chemical energy.' },
+      { id: 'ss2', prompt: 'Which part of a plant makes food?', options: ['Leaf', 'Root', 'Stem'], answerIndex: 0, explanation: 'Leaves use sunlight to make food for the plant.' },
+      { id: 'ss3', prompt: 'What is an engineer most likely to do?', options: ['Design a bridge', 'Paint a picture', 'Write a story'], answerIndex: 0, explanation: 'Engineers design and build structures and systems.' }
+    ]
+  },
+  {
+    id: 'creative-crafts',
+    title: 'Creative Crafts',
+    grade: 'preschool',
+    category: 'Creative',
+    difficulty: 'Easy',
+    duration: 9,
+    description: 'Use color, imagination, and shapes to create fun art ideas.',
+    points: 14,
+    badge: 'Mini Artist',
+    icon: '🎨',
+    questions: [
+      { id: 'cc1', prompt: 'What color do you get when you mix blue and yellow?', options: ['Green', 'Orange', 'Purple'], answerIndex: 0, explanation: 'Blue and yellow make green.' },
+      { id: 'cc2', prompt: 'Which shape is best for a round sun?', options: ['Circle', 'Triangle', 'Rectangle'], answerIndex: 0, explanation: 'A circle is round like the sun.' },
+      { id: 'cc3', prompt: 'What helps an artwork look colorful?', options: ['Different colors', 'Only one color', 'No shapes'], answerIndex: 0, explanation: 'Using different colors makes art vibrant and interesting.' }
+    ]
+  },
+  {
+    id: 'word-sprint',
+    title: 'Word Sprint',
+    grade: 'kindergarten',
+    category: 'Games',
+    difficulty: 'Easy',
+    duration: 10,
+    description: 'Quick word challenges that build confidence in reading and spelling.',
+    points: 16,
+    badge: 'Word Wizard',
+    icon: '✨',
+    questions: [
+      { id: 'ws1', prompt: 'Which word has the same first sound as cat?', options: ['Dog', 'Car', 'Sun'], answerIndex: 1, explanation: 'Car starts with the /k/ sound like cat.' },
+      { id: 'ws2', prompt: 'Which word is spelled correctly?', options: ['Happey', 'Happy', 'Hapy'], answerIndex: 1, explanation: 'Happy is spelled correctly.' },
+      { id: 'ws3', prompt: 'Which word is longer?', options: ['Book', 'Rainbow', 'Cat'], answerIndex: 1, explanation: 'Rainbow is longer than book or cat.' }
+    ]
+  },
+  {
+    id: 'measure-magic',
+    title: 'Measure Magic',
+    grade: 'grades1-2',
+    category: 'Math',
+    difficulty: 'Medium',
+    duration: 13,
+    description: 'Compare lengths, heights, and simple measurements in playful ways.',
+    points: 19,
+    badge: 'Measuring Pro',
+    icon: '📏',
+    questions: [
+      { id: 'mm1', prompt: 'Which object is longer?', options: ['A pencil', 'A ruler', 'A crayon'], answerIndex: 1, explanation: 'A ruler is usually longer than a pencil or crayon.' },
+      { id: 'mm2', prompt: 'If one block is shorter than another, which is shorter?', options: ['The smaller one', 'The bigger one', 'Neither'], answerIndex: 0, explanation: 'The shorter object is the smaller one.' },
+      { id: 'mm3', prompt: 'What unit is often used to measure a ruler?', options: ['Inches', 'Stars', 'Songs'], answerIndex: 0, explanation: 'Inches are used to measure length.' }
+    ]
+  },
+  {
+    id: 'weather-watch',
+    title: 'Weather Watch',
+    grade: 'grades3-5',
+    category: 'Science',
+    difficulty: 'Medium',
+    duration: 17,
+    description: 'Observe weather patterns and learn how conditions change outside.',
+    points: 27,
+    badge: 'Forecast Friend',
+    icon: '🌦️',
+    questions: [
+      { id: 'ww1', prompt: 'What falls from clouds when it is raining?', options: ['Water', 'Snowballs', 'Leaves'], answerIndex: 0, explanation: 'Rain is water falling from clouds.' },
+      { id: 'ww2', prompt: 'Which weather is hottest?', options: ['Sunny day', 'Snowy day', 'Windy day'], answerIndex: 0, explanation: 'A sunny day is usually the hottest.' },
+      { id: 'ww3', prompt: 'What do we use to measure temperature?', options: ['Thermometer', 'Ruler', 'Clock'], answerIndex: 0, explanation: 'A thermometer measures temperature.' }
+    ]
+  },
+  {
+    id: 'pattern-power',
+    title: 'Pattern Power',
+    grade: 'grades6-7',
+    category: 'Games',
+    difficulty: 'Hard',
+    duration: 19,
+    description: 'Spot repeating patterns and decode the next shape or number.',
+    points: 31,
+    badge: 'Pattern Genius',
+    icon: '📐',
+    questions: [
+      { id: 'ppw1', prompt: 'What comes next: 5, 10, 15, 20, ?', options: ['25', '30', '35'], answerIndex: 0, explanation: 'The pattern increases by 5 each time.' },
+      { id: 'ppw2', prompt: 'Which symbol fits the pattern: circle, square, circle, square, ?', options: ['Triangle', 'Circle', 'Star'], answerIndex: 1, explanation: 'The pattern repeats circle, square.' },
+      { id: 'ppw3', prompt: 'What is the rule in 1, 3, 5, 7?', options: ['Add 2', 'Add 3', 'Multiply by 2'], answerIndex: 0, explanation: 'Each number increases by 2.' }
     ]
   }
 ];

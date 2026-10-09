@@ -1,71 +1,47 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { create } from 'zustand';
-import { GradeLevel, ProgressRecord } from '../types';
-
-interface AppStore {
-  selectedGrade: GradeLevel;
-  progress: ProgressRecord;
-  setSelectedGrade: (grade: GradeLevel) => void;
-  completeLesson: (lessonId: string, points: number) => void;
-  setProgress: (progress: ProgressRecord) => void;
-  hydrate: () => Promise<void>;
-}
-
-const defaultProgress: ProgressRecord = {
-  grade: 'preschool',
-  completedLessons: [],
-  starCount: 0,
-  streak: 0,
-  badges: []
-};
-
-export const useStore = create<AppStore>((set, get) => ({
-  selectedGrade: 'preschool',
-  progress: defaultProgress,
-
-  setSelectedGrade: async (grade) => {
-    const nextProgress = { ...get().progress, grade };
-    set({ selectedGrade: grade, progress: nextProgress });
-    await AsyncStorage.setItem('kids_app_progress', JSON.stringify(nextProgress));
+export const theme = {
+  colors: {
+    primary: '#7C3AED',
+    primaryDark: '#5B21B6',
+    primarySoft: '#E9D5FF',
+    secondary: '#F59E0B',
+    secondarySoft: '#FDE68A',
+    success: '#10B981',
+    successSoft: '#DCFCE7',
+    warning: '#FBBF24',
+    red: '#EF4444',
+    redSoft: '#FEE2E2',
+    dark: '#1F2937',
+    darkSoft: '#374151',
+    light: '#F8FAFC',
+    card: '#FFFFFF',
+    border: '#E5E7EB',
+    softBlue: '#DBEAFE',
+    softPink: '#FCE7F3',
+    softGreen: '#DCFCE7',
+    softYellow: '#FEF3C7',
+    plum: '#F3E8FF',
+    mint: '#ECFDF5'
   },
-
-  completeLesson: async (lessonId, points) => {
-    const current = get().progress;
-
-    if (current.completedLessons.includes(lessonId)) {
-      return;
-    }
-
-    const updated: ProgressRecord = {
-      ...current,
-      completedLessons: [...current.completedLessons, lessonId],
-      starCount: current.starCount + points,
-      streak: current.streak + 1,
-      badges: current.badges.includes('Learning Star')
-        ? current.badges
-        : [...current.badges, 'Learning Star']
-    };
-
-    set({ progress: updated });
-    await AsyncStorage.setItem('kids_app_progress', JSON.stringify(updated));
+  spacing: {
+    xs: 8,
+    sm: 12,
+    md: 16,
+    lg: 20,
+    xl: 24,
+    xxl: 32
   },
-
-  setProgress: async (progress) => {
-    set({ selectedGrade: progress.grade, progress });
-    await AsyncStorage.setItem('kids_app_progress', JSON.stringify(progress));
+  radius: {
+    sm: 10,
+    md: 16,
+    lg: 22,
+    xl: 30,
+    xxl: 40
   },
-
-  hydrate: async () => {
-    try {
-      const value = await AsyncStorage.getItem('kids_app_progress');
-      if (!value) {
-        return;
-      }
-
-      const parsed = JSON.parse(value) as ProgressRecord;
-      set({ selectedGrade: parsed.grade, progress: parsed });
-    } catch (error) {
-      console.log('Hydration error', error);
-    }
+  shadow: {
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 4
   }
-}));
+};

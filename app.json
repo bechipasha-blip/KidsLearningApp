@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "KidsLearningApp",
-    "slug": "kids-learning-app",
-    "version": "1.0.0",
+    "name": "RuAli",
+    "slug": "ruali-kids-learning",
+    "version": "1.2.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -15,16 +15,21 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.ruali.kids",
+      "buildNumber": "1"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#7C3AED"
-      }
+      },
+      "package": "com.ruali.kids",
+      "versionCode": 1
     },
     "web": {
-      "bundler": "metro"
+      "bundler": "metro",
+      "favicon": "./assets/favicon.png"
     }
   }
 }

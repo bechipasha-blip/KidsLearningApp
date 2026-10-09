@@ -5,7 +5,7 @@ export type GradeLevel =
   | 'grades3-5'
   | 'grades6-7';
 
-export type LessonCategory = 'Math' | 'Reading' | 'Science' | 'Logic' | 'Creative';
+export type LessonCategory = 'Math' | 'Reading' | 'Science' | 'Logic' | 'Creative' | 'Games';
 
 export type Question = {
   id: string;
@@ -25,6 +25,7 @@ export type Lesson = {
   description: string;
   points: number;
   badge: string;
+  icon: string;
   questions: Question[];
 };
 
@@ -38,8 +39,10 @@ export type ProgressRecord = {
 
 export type RootStackParamList = {
   GradeSelect: undefined;
-  Home: { grade: GradeLevel };
+  Home: { grade?: GradeLevel };
   Lesson: { lessonId: string };
   Quiz: { lessonId: string };
   Progress: undefined;
+  Rewards: undefined;
+  ParentDashboard: undefined;
 };
